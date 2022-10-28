@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import BaseModal from '../../components/common/modal';
 import useUsers from '../../hooks/users/useUsers';
-import { styles } from './styles';
-import { Box } from '@mui/system';
+import UserForm from './userForm';
 
 const defaultUser = {
     id: 0,
@@ -85,38 +84,6 @@ const Users = () => {
     });
   }
 
-  const getContent = () => (
-    <Box sx={styles.inputFields}>
-        <TextField 
-              placeholder="Nombre" 
-              name="name"
-              label="Nombre"
-              required
-              value={currentUser.name}              
-              autoFocus
-              onChange={(e) => handleChange(e.target)}
-        />
-
-        <TextField 
-              placeholder="Email" 
-              name="email"
-              label="Email"
-              required
-              value={currentUser.email}
-              onChange={(e) => handleChange(e.target)}
-        />
-
-        <TextField 
-              placeholder="Password" 
-              name="password"
-              label="Password"
-              required
-              value={currentUser.password}
-              onChange={(e) => handleChange(e.target)}
-        />
-
-    </Box>
-  );
 
   return (
     <>
@@ -138,14 +105,16 @@ const Users = () => {
             hideFooterPagination={true}
           /> 
       </Grid>
-
       
       <BaseModal
         open={open}
         onClose={() => setOpen(false)}
         title="Usuarios"
         subTitle="Edicion"
-        content={getContent()}
+        content= {<UserForm 
+                    currentUser={currentUser} 
+                    handleChange={handleChange} 
+                  />}
         onSubmit={() => handleSave()}
         disableSubmit={false}
       />
