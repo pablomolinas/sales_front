@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import { DataGrid } from '@mui/x-data-grid';
 import { Button, Grid } from '@mui/material';
 import BaseModal from '../../components/common/modal';
 import useUsers from '../../hooks/users/useUsers';
